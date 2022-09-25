@@ -3,12 +3,30 @@
 
         <mat-toolbar>
             <span>Menú</span>
+            <span class="spacer"></span>
+
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu_book</mat-icon>
             </button>
         </mat-toolbar>
 
-        <mat-nav-list></mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listado" mat-list-item>
+                <mat-icon mat-list-icon>star</mat-icon>
+                <span>
+                    Listado de Heroes</span>
+            </a>
+            <a routerLink="agregar" mat-list-item>
+                <mat-icon mat-list-icon>person_add</mat-icon>
+                <span>
+                    Agregar Heroe</span>
+            </a>
+            <a routerLink="agregar" mat-list-item>
+                <mat-icon mat-list-icon>saved_search</mat-icon>
+                <span>
+                    Buscar Heroe</span>
+            </a>
+        </mat-nav-list>
 
     </mat-sidenav>
 
@@ -16,6 +34,17 @@
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu_book</mat-icon>
         </button>
+
+        <span class="spacer"></span>
+
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>logout</mat-icon>
+        </button>
     </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+
+    </div>
 
 </mat-sidenav-container>
