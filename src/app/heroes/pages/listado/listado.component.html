@@ -1,10 +1,10 @@
 <h1>Listado de <strong>Heroes</strong></h1>
 <mat-divider></mat-divider>
 
-<div fxLayout="row wrap">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
 
-    <div fxFlex="20">
-        <mat-card *ngFor="let heroe of heroes">
+    <div fxFlex="30" fxFlex.lg="15" fxFlex.sm="40" *ngFor="let heroe of heroes">
+        <mat-card>
             <mat-card-title>
                 {{ heroe.superhero }}
             </mat-card-title>
