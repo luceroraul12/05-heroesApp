@@ -1,22 +1,12 @@
-<p>home works!</p>
-<hr>
-<ol>
-    Redireccionamiento
-    <li>
-        <a routerLink="listado">listado</a>
-    </li>
-    <li>
-        <a routerLink="agregar">agregar</a>
-    </li>
-    <li><a routerLink="editar/:id">editar - id</a></li>
-    <li>
-        <a routerLink="buscar">buscar</a>
-    </li>
-    <li>
-        <a routerLink=":id">
-            id
-        </a>
-    </li>
-</ol>
-<hr>
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav>
+        <h1>Sidenav</h1>
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu_book</mat-icon>
+        </button>
+    </mat-toolbar>
+
+</mat-sidenav-container>
