@@ -26,6 +26,10 @@ export class BuscarComponent implements OnInit {
   }
 
   opcionSeleccionada(event: MatAutocompleteSelectedEvent){
+    if(event.option.value == undefined){
+      console.log("llegó por string invalido", event.option.value);
+      return
+    }
     const heroe: Heroe = event.option.value;
     console.log(heroe);
     this.termino = heroe.superhero;
@@ -33,7 +37,12 @@ export class BuscarComponent implements OnInit {
   this.heroesService.getHeroePorId(heroe.id!).subscribe(
       heroe => this.heroeSeleccionado = heroe
   )
-    
   }
+
+  existenHeroesSegueridos(): boolean {
+    return this.heroes.length != 0;
+  }
+
+ 
 
 }
