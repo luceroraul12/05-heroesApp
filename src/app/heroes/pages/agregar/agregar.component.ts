@@ -34,4 +34,20 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(({ id }) => console.log(id));
   }
+
+  guardar(){
+
+    if(this.heroe.superhero == ""){
+      alert("heroe sin nombre");
+      return
+    }
+
+    if(this.heroe.alter_ego == ""){
+      alert("heroe sin alter ego");
+      return
+    }
+  
+    console.log(this.heroe);
+    
+  }
 }

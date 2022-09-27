@@ -1,5 +1,7 @@
 <p>Nuevo Heroe!</p>
-
+<pre>
+    {{heroe | json}}
+</pre>
 <div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column" >
 
     <div fxFlex="50" fxLayout="column">
@@ -12,6 +14,7 @@
                 <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroe.superhero"
                 required>
             </mat-form-field>
             <mat-form-field>
@@ -19,6 +22,7 @@
                 <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroe.alter_ego"
                 required>
             </mat-form-field>
         </div>
@@ -27,6 +31,7 @@
             <input 
             matInput
             type="text"
+            [(ngModel)]="heroe.first_appearance"
             required>
         </mat-form-field>
         <mat-form-field>
@@ -34,24 +39,27 @@
             <input 
             matInput
             type="text"
+            [(ngModel)]="heroe.characters"
             required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="heroe.publisher"  >
                 <mat-option 
                 *ngFor="let item of creadores"
-                [value]="item.id" > {{item.desc}} </mat-option>
+                [value]="item.id"> {{item.desc}} </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Personajes</mat-label>
+            <mat-label>URL IMG</mat-label>
             <input 
             matInput
-            type="url"
+            type="text"
+            [(ngModel)]="heroe.alt_img"
             required>
         </mat-form-field>
-        <button mat-raised-button color="accent">Guardar</button>
+       
+        <button mat-raised-button color="accent" (click)="guardar()" >Guardar</button>
     </div>
     <div fxFlex="50">
         
