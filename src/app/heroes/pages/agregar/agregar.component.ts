@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, CanActivate, RouterLinkActive } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-agregar',
@@ -29,7 +30,7 @@ export class AgregarComponent implements OnInit {
       alt_img: ""
   };
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute, private heroesService: HeroesService) {}
 
   ngOnInit(): void {
     this.router.params.subscribe(({ id }) => console.log(id));
@@ -47,7 +48,7 @@ export class AgregarComponent implements OnInit {
       return
     }
   
-    console.log(this.heroe);
+    this.heroesService.agregarHeroe(this.heroe).subscribe(console.log);
     
   }
 }
