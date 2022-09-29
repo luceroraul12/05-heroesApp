@@ -56,8 +56,18 @@
             [(ngModel)]="heroe.alt_img"
             required>
         </mat-form-field>
-       
-        <button mat-raised-button color="accent" (click)="guardar()" >Guardar</button>
+        
+        <div fxLayoutGap="10px" fxLayout="row">
+            <button mat-raised-button color="accent" (click)="guardar()" >Guardar</button>
+            <br>
+            <button 
+            mat-raised-button 
+            color="warn"
+            *ngIf="heroe.id"
+            (click)="eliminar()"
+            >Eliminar</button>
+        </div>
+        
     </div>
     <div fxFlex="50">
         <img [src]="heroe | imagen">

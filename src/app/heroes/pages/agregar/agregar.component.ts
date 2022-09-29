@@ -55,6 +55,8 @@ export class AgregarComponent implements OnInit {
     }
   }
 
+ 
+
   guardar(){
 
     if(this.heroe.superhero == ""){
@@ -77,5 +79,13 @@ export class AgregarComponent implements OnInit {
     }
   
     
+  }
+
+  eliminar(): void{
+    this.heroesService.eliminarHeroe(this.heroe.id!).subscribe(
+      respuesta => {
+        this.router.navigate(["/heroes"]);
+      }
+    )
   }
 }
