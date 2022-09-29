@@ -1,4 +1,8 @@
-<p>Nuevo Heroe!</p>
+<h1>
+    {{ !heroe.id ? "Creando " : "Editando " }}
+    Heroe:
+    <h2> {{heroe.superhero}} </h2>
+</h1>
 
 <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" >
 
@@ -58,7 +62,9 @@
         </mat-form-field>
         
         <div fxLayoutGap="10px" fxLayout="row">
-            <button mat-raised-button color="accent" (click)="guardar()" >Guardar</button>
+            <button mat-raised-button color="accent" (click)="guardar()" >
+                {{ heroe.id ? "Editar" : "Crear" }}
+            </button>
             <br>
             <button 
             mat-raised-button 
