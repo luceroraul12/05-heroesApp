@@ -1,0 +1,17 @@
+<h1>Seguro que quieres eliminar a {{data.superhero}}?</h1>
+<hr>
+<p>El heroe será borrado para siempre
+    <br>
+    Ejecutar?
+</p>
+
+<div fxLayout="row" fxLayoutGap="10px">
+    <button 
+    mat-raised-button 
+    color="primary"
+    (click)="borrar()">SI</button>
+    <button 
+    mat-raised-button 
+    color="warn"
+    (click)="cancelar()">NO</button>
+</div>

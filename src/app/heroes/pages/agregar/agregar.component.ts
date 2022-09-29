@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, CanActivate, Router, RouterLinkActive } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { DialogoDeConfirmacionComponent } from '../../components/dialogo-de-confirmacion/dialogo-de-confirmacion.component';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -44,7 +46,8 @@ export class AgregarComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private heroesService: HeroesService,
     private router: Router,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog) {}
 
   ngOnInit(): void {
     if(this.router.url.includes("editar")){
@@ -91,12 +94,26 @@ export class AgregarComponent implements OnInit {
   }
 
   eliminar(): void{
-    this.heroesService.eliminarHeroe(this.heroe.id!).subscribe(
-      respuesta => {
-        this.router.navigate(["/heroes"]);
+
+    const dialog = this.dialog.open(DialogoDeConfirmacionComponent, {
+      data: this.heroe
+    });
+
+    dialog.afterClosed().subscribe(
+      resultado => {
+        if(resultado){
+          this.heroesService.eliminarHeroe(this.heroe.id!).subscribe(
+            respuesta => {
+              this.router.navigate(["/heroes"]);
+            }
+          )
+        }
       }
     )
 
-    this.emitirSnackBar("Heroe eliminado!!!!!")
+
+    
+
+    // this.emitirSnackBar("Heroe eliminado!!!!!")
   }
 }
