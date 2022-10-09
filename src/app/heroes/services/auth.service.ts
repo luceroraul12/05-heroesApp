@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  private _auth!: Auth;
+  private _auth: Auth | undefined;
 
   get auth(): Auth{
-    return this._auth;
+    return this._auth!;
   }
 
   private urlApi = environment.baseUrl;
@@ -22,5 +22,9 @@ export class AuthService {
   login(): Observable<Auth> {
     return this.http.get<Auth>(`${this.urlApi}/usuarios/1`)
                 .pipe(tap(auth => this._auth = auth));
+  }
+
+  logout(): void {
+    this._auth = undefined;
   }
 }
