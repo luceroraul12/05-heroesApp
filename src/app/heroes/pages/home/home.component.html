@@ -37,6 +37,8 @@
 
         <span class="spacer"></span>
 
+        <strong *ngIf="auth"> {{auth.usuario | titlecase}} </strong>
+
         <button mat-icon-button (click)="sidenav.toggle()" (click)="logout()">
             <mat-icon>logout</mat-icon>
         </button>
